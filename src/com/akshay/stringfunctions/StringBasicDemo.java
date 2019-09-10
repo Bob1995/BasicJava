@@ -1,6 +1,8 @@
 package com.akshay.stringfunctions;
 
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class StringBasicDemo {
 
@@ -18,7 +20,8 @@ public class StringBasicDemo {
 	}
 
 	/*
-	 * Function to reverse given sentence input:This is Akshay output:Akshay is This
+	 * Function to reverse given sentence input:This is Akshay output:Akshay is
+	 * This
 	 */
 	public static void sentenceReverseWords(String givenSentence) {
 		String reversedSentence = "";
@@ -48,9 +51,7 @@ public class StringBasicDemo {
 	}
 
 	/*
-	 * Function to count the characters in string
-	 * input-AKSHAY
-	 * output-2
+	 * Function to count the characters in string input-AKSHAY output-2
 	 */
 
 	public static void characterCount(String givenString, char givenCharacter) {
@@ -60,26 +61,64 @@ public class StringBasicDemo {
 				count++;
 
 		}
-		System.out.println(
-				"Given String--->" + givenString + "\n" + "Given character--->" + givenCharacter + "\n" + "Count" + count);
+		System.out.println("Given String--->" + givenString + "\n" + "Given character--->" + givenCharacter + "\n"
+				+ "Count" + count);
 
 	}
 
+	/*
+	 * I/P:String abc =movie-ddlj,actor-srk,food-wadapav,city-mumbai
+	 * o/p:movie-ddlj,actor-srk,food-wadapav,city-mumbai
+	 */
+	private static void addStringToMap(String testString) {
+		String[] splitedString = null;
+		Map<String, String> treeMap = new TreeMap<>();
+		for (int i = 0; i < testString.length(); i++) {
+			splitedString = testString.split("-|,");
+
+		}
+
+		for (int j = 0; j < splitedString.length; j++) {
+			treeMap.put(splitedString[j], splitedString[++j]);
+		}
+
+		System.out.println("TreeMap Values :" + treeMap);
+	}
+
+	public static void individualCharacterCount(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			int count = 0;
+			char a = str.charAt(i);
+
+			if (a != ' ') {
+				for (int j = 0; j < str.length(); j++) {
+					if (a == str.charAt(j))
+						count++;
+				}
+
+			}
+			System.out.println("Character:" + a + "--->>>" + "Count " + count);
+		}
+	}
+
 	public static void main(String[] args) {
+
+		addStringToMap("movie-ddlj,actor-srk,food-wadapav,city-mumbai");
+
+		individualCharacterCount("Akshay");
 		
 		System.out.println("Enter the string:");
 		scanner = new Scanner(System.in);
 		String givenString = scanner.next();
-		
+
 		stringReverse(givenString);
 
-		
 		System.out.println("Enter the sentence:");
 		scanner = new Scanner(System.in);
 		String givenSentence = scanner.nextLine();
-		
+
 		sentenceReverseWords(givenSentence);
-		
+
 		sentenceReverseCharacter(givenSentence);
 
 		System.out.println("Enter the character:");
